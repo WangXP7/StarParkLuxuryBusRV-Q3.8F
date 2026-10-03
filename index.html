@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>星泊豪华大巴房车 · 交互式三维展示</title>
+<meta name="description" content="星泊豪华大巴房车（StarPark Luxury Bus RV）程序化三维模型：外观环绕、车内漫游、剖面透视三种视角，全部几何与材质由 Blender bpy 脚本生成。">
+<link rel="stylesheet" href="./styles.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js",
+    "three/addons/": "./vendor/three/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="stage"></canvas>
+
+<header id="brand">
+  <h1>星泊豪华大巴房车</h1>
+  <p>StarPark Luxury Bus RV · 程序化生成三维模型</p>
+</header>
+
+<aside id="spec">
+  <h2>车型要点</h2>
+  <dl>
+    <dt>车身</dt><dd>珍珠白长车身 · 石墨灰下裙板 · 香槟金腰线</dd>
+    <dt>行走</dt><dd>三轴六轮，前单后双，青铜色轮辐</dd>
+    <dt>入口</dt><dd>右前乘客门，位于前轮之前</dd>
+    <dt>前部</dt><dd>左舵驾驶台 + 奶油色 L 形沙发会客区</dd>
+    <dt>中部</dt><dd>胡桃木整体厨房 · 独立卫浴</dd>
+    <dt>后部</dt><dd>下层低趴跑车库 · 上层抬升卧铺（中间实地板分隔，登车踏步进入）</dd>
+    <dt>车顶</dt><dd>前段固定无人机起降/充电平台 · 后段单管薄膜防御炮塔</dd>
+    <dt>动力</dt><dd>车厢地板下方横置动力总成 + 散热器模块</dd>
+  </dl>
+  <p class="note">全部几何体由 Blender 5.2 的 bpy 脚本程序化生成，未导入任何外部模型、贴图或 HDR。</p>
+</aside>
+
+<nav id="hud">
+  <div class="tabs" id="modes">
+    <button data-mode="orbit" class="on">外观环绕</button>
+    <button data-mode="interior">车内漫游</button>
+    <button data-mode="section">剖面透视</button>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="slider" id="cutWrap" hidden>
+    <label for="cut">剖切位置</label>
+    <input id="cut" type="range" min="-1.35" max="1.35" step="0.01" value="0.35">
+  </div>
+  <p id="hint">按住拖拽旋转视角 · 滚轮缩放 · 右键平移</p>
+</nav>
+
+<div id="loader">
+  <div class="box">
+    <div class="bar"><i id="pbar"></i></div>
+    <p id="ptext">正在载入模型…</p>
+  </div>
+</div>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>
