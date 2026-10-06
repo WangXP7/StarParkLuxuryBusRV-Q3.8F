@@ -7,7 +7,7 @@ Axis: +X = vehicle front, +Y = vehicle LEFT, +Z up. Ground at Z=0.
 import bpy, bmesh, math, os, time
 from mathutils import Vector, Matrix
 
-OUT = r"PRIVACY-REDACTED\Blender\StarParkLuxuryBusRV-Qoder-Qwen3.8Flash"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
 R = math.radians
 TAG = 'v1'
 T0 = time.time()

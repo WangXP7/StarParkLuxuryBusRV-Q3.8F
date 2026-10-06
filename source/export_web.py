@@ -1,7 +1,7 @@
 import bpy
 import os
 
-OUT = r"PRIVACY-REDACTED\Blender\StarParkLuxuryBusRV-Qoder-Qwen3.8Flash"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
 dst = os.path.join(OUT, 'web', 'assets', 'starpark_rv.glb')
 os.makedirs(os.path.dirname(dst), exist_ok=True)
 
